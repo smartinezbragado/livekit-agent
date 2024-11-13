@@ -16,6 +16,10 @@ livekit-plugins-elevenlabs = "^0.7.7"
 fastapi = "^0.115.4"
 uvicorn = "^0.32.0"
 click = "^8.1.7"
+loguru = "^0.7.2"
+requests = "^2.32.3"
+sounddevice = "^0.5.1"
+pyjwt = "^2.9.0"
 
 
 [build-system]

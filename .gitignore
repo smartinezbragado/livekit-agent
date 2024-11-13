@@ -7,3 +7,43 @@
 
 # Notebooks
 *.ipynb
+
+# Node modules
+src/frontend/node_modules/*
+
+# Next.js build output
+src/frontend/.next/*
+src/frontend/out/*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Production
+build/
+
+# Miscellaneous
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Vercel
+.vercel/
+
+# MacOS
+.DS_Store
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
