@@ -47,3 +47,6 @@ build/
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# Private files
+.*

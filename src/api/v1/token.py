@@ -34,4 +34,10 @@ async def get_token():
     ).with_identity(participant_identity) \
     .with_grants(grant) \
     .to_jwt()
-    return JSONResponse({"token": token})
+
+    return JSONResponse({
+        "serverUrl": LIVEKIT_URL,
+        "roomName": "voice_assistant_room",
+        "participantToken": token,
+        "participantName": participant_identity,
+    })
