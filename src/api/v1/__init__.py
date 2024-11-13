@@ -1,4 +1,4 @@
-from src.api.v1 import token
+from src.api.v1 import talent, token, notifications
 
 
-__all__ = ["token"]
+__all__ = ["token", "notifications", "talent"]

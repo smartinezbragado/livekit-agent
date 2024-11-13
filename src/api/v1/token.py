@@ -10,11 +10,8 @@ router = APIRouter(prefix="/token", tags=["token"])
 
 @router.get("/")
 async def get_token():
-    LIVEKIT_API_KEY = os.environ.get("LIVEKIT_API_KEY")
-    LIVEKIT_API_SECRET = os.environ.get("LIVEKIT_API_SECRET")
-    LIVEKIT_URL = os.environ.get("LIVEKIT_URL")
 
-    if not LIVEKIT_API_KEY or not LIVEKIT_API_SECRET or not LIVEKIT_URL:
+    if not os.environ.get("LIVEKIT_API_KEY") or not os.environ.get("LIVEKIT_API_SECRET") or not os.environ.get("LIVEKIT_URL"):
         raise HTTPException(
             status_code=500, detail="LiveKit environment variables are not set"
         )
@@ -36,7 +33,7 @@ async def get_token():
     .to_jwt()
 
     return JSONResponse({
-        "serverUrl": LIVEKIT_URL,
+        "serverUrl": os.environ.get("LIVEKIT_URL"),
         "roomName": "voice_assistant_room",
         "participantToken": token,
         "participantName": participant_identity,

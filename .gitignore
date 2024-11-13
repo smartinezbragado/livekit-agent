@@ -50,3 +50,4 @@ build/
 
 # Private files
 .*
+test.py
