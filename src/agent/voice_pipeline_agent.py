@@ -33,16 +33,6 @@ class VoiceAssistantWithSilenceDetection(VoiceAssistant):
         self.last_user_input_time = datetime.now()
         await super().on_user_input(text)
 
-async def save_conversation_periodically(voice_assistant):
-    logger.info("Starting conversation storage task")
-    while True:
-        await asyncio.sleep(1)  
-        conversation = voice_assistant.chat_ctx.messages
-
-        async with aiofiles.open("conversation.txt", 'a', encoding='utf-8') as f:
-            await f.write(str(conversation))
-        logger.info(f"Conversation saved to conversation.json")
-
 
 async def entrypoint(ctx: JobContext):
     initial_context = ChatContext().append(
