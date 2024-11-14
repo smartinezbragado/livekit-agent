@@ -16,10 +16,10 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">Hire<span>Sense</span></div>
-            <ul class="nav-links">
-                <li><a href="#send-interview">Send Interview</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <i class="fas fa-bars menu-icon" id="menuIcon"></i>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#interview">AI Interview</a></li>
+                <li><a href="#onboarding">AI Onboarding</a></li>
             </ul>
         </div>
     </nav>
@@ -29,7 +29,7 @@
         <div class="header-content">
             <h1>Revolutionize Your Hiring Process with <span>HireSense</span></h1>
             <p class="slogan">AI-powered talent acquisition for the modern recruiter</p>
-            <a href="#send-interview" class="cta-button">Get Started</a>
+            <a href="#interview" class="cta-button">Get Started</a>
         </div>
     </header>
 
@@ -39,18 +39,48 @@
             <div class="container">
                 <h2>Send an AI-Powered Interview</h2>
                 <p>Effortlessly send interviews and screen candidates with our AI-driven platform.</p>
+
+                <!-- Existing input for candidate's email -->
                 <div class="input-container">
-                    <input type="email" id="candidateEmail" placeholder="Candidate's Email" required>
+                    <input type="email" id="candidateEmail" required>
+                    <label for="candidateEmail">Candidate's Email</label>
                 </div>
+
+                <!-- Existing input for job description -->
                 <div class="input-container">
-                    <textarea id="jobDescription" placeholder="Job Description" required></textarea>
+                    <textarea id="jobDescription" required></textarea>
+                    <label for="jobDescription">Job Description</label>
                 </div>
+
+                <!-- New input for resume upload -->
+                <div class="input-container">
+                    <input type="file" id="candidateResume" accept=".pdf,.doc,.docx" required>
+                    <label for="candidateResume">Upload Resume</label>
+                </div>
+
                 <button id="sendInterview">Send Interview</button>
                 <p id="responseMessage"></p>
             </div>
         </section>
     </main>
 
+    <!-- AI Onboarding Buddy Section -->
+    <section id="ai-onboarding-buddy" class="chatbot-section">
+        <div class="container">
+            <h2>AI Onboarding Buddy</h2>
+            <p>Ask any questions about your onboarding process.</p>
+            <div class="chat-container">
+                <div id="chatWindow" class="chat-window">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userMessage" placeholder="Type your question here..." required>
+                    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer>
         <div class="container">
