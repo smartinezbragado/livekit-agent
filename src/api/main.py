@@ -19,6 +19,7 @@ app.add_middleware(
 app.include_router(v1.talent.router)
 app.include_router(v1.token.router)
 app.include_router(v1.notifications.router)
+app.include_router(v1.vectorstore.router)  # Added vectorstore router
 
 if __name__ == "__main__":
     uvicorn.run("src.api.main:app", port=8000)
