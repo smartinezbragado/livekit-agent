@@ -1,16 +1,20 @@
-from fastapi import APIRouter, HTTPException
-import requests
+from fastapi import APIRouter, HTTPException, Form, UploadFile, File
+from pydantic import EmailStr
 import os
-from src.api.v1.schemas import JobDescriptionRequest
+import shutil
 from openai import OpenAI
 from loguru import logger
 
 openai_client = OpenAI()
 
-router = APIRouter(prefix="/talent")
+router = APIRouter(prefix="/api/v1/talent")
 
 @router.post("/generate-prompt")
-async def generate_prompt(request: JobDescriptionRequest):
+async def generate_prompt(
+    email: EmailStr = Form(...),
+    job_description: str = Form(...),
+    resume: UploadFile = File(...)
+):
     OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL")
     OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
@@ -39,12 +43,10 @@ async def generate_prompt(request: JobDescriptionRequest):
     1. Create the system prompt in markdown
     2. Generate directly the prompt, do not add additional commments
     """
-    user_prompt = f"Job Description: {request.job_description}"
+    user_prompt = f"Job Description: {job_description}"
 
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": f"Bearer {OPENAI_API_KEY}"
-    }
+    with open(resume.filename, "wb") as buffer:
+        shutil.copyfileobj(resume.file, buffer)
 
     try:
         response = openai_client.chat.completions.create(

@@ -5,7 +5,7 @@ from sendgrid.helpers.mail import Mail
 import os
 from loguru import logger
 
-router = APIRouter(prefix="/notifications")
+router = APIRouter(prefix="/api/v1/notifications")
 
 
 @router.post("/send-email")
